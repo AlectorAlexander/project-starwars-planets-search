@@ -9,6 +9,7 @@ function Provider({ children }) {
   const [loading, setLoad] = useState(true);
   const [filterByName, setFilter] = useState({});
   const [search, setSearch] = useState('');
+  const [filterByNumeric, setFilterByNumeric] = useState('');
 
   async function setStarWarsState() {
     const API = await fetchStarWars();
@@ -22,6 +23,8 @@ function Provider({ children }) {
     search,
     table,
     filterByName,
+    filterByNumeric,
+    setFilterByNumeric,
     setFilter,
     setData,
     setTable,
