@@ -3,8 +3,8 @@ import React, { useContext, useEffect } from 'react';
 import SWContext from '../context/SWContext';
 
 function Input() {
-  const { data, search, setTable,
-    setFilter, setSearch, setFilterByNumeric } = useContext(SWContext);
+  const { data, search, setTable, table,
+    setFilter, setSearch, filterByNumeric, setFilterByNumeric } = useContext(SWContext);
   useEffect(() => {
     setFilter({ filterByName: { name: search } });
     if (search) {
@@ -21,26 +21,37 @@ function Input() {
     const column = document.getElementById('column').value;
     const comparison = document.getElementById('comparison').value;
     const valueFilter = document.getElementById('value-filter').value;
-    setFilterByNumeric({
-      filterByNumericValues: [
+    if (filterByNumeric) {
+      setFilterByNumeric({ filterByNumericValues: [
+        ...filterByNumeric.filterByNumericValues,
         {
           column,
           comparison,
           value: valueFilter,
         },
       ],
-    });
+      });
+    } else {
+      setFilterByNumeric({ filterByNumericValues: [
+        {
+          column,
+          comparison,
+          value: valueFilter,
+        },
+      ],
+      });
+    }
     switch (comparison) {
     case 'maior que':
-      setTable(data
+      setTable(table
         .filter((element) => Number(element[column]) > Number(valueFilter)));
       break;
     case 'menor que':
-      setTable(data
+      setTable(table
         .filter((element) => Number(element[column]) < Number(valueFilter)));
       break;
     case 'igual a':
-      setTable(data
+      setTable(table
         .filter((element) => Number(element[column]) === Number(valueFilter)));
       break;
 
@@ -61,14 +72,14 @@ function Input() {
       />
       <fieldset>
         <select data-testid="column-filter" id="column">
-          <option value="population" selected>population</option>
+          <option value="population" defaultValue>population</option>
           <option value="orbital_period">orbital_period</option>
           <option value="diameter">diameter</option>
           <option value="rotation_period">rotation_period</option>
           <option value="surface_water">surface_water</option>
         </select>
         <select data-testid="comparison-filter" id="comparison">
-          <option value="maior que" selected>maior que</option>
+          <option value="maior que" defaultValue>maior que</option>
           <option value="menor que">menor que</option>
           <option value="igual a">igual a</option>
         </select>
