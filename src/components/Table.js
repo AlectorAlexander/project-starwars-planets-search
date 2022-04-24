@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import SWContext from '../context/SWContext';
 import Input from '../hooks/Search';
-import Filters from './Filters';
+import Filters from '../hooks/Filters';
 
 function Table() {
   const { setStarWarsState, table, loading } = useContext(SWContext);

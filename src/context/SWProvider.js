@@ -10,6 +10,8 @@ function Provider({ children }) {
   const [filterByName, setFilter] = useState({});
   const [search, setSearch] = useState('');
   const [filterByNumeric, setFilterByNumeric] = useState('');
+  const [column, setColumn] = useState(['population', 'orbital_period', 'diameter',
+    'rotation_period', 'surface_water']);
 
   async function setStarWarsState() {
     const API = await fetchStarWars();
@@ -24,6 +26,8 @@ function Provider({ children }) {
     table,
     filterByName,
     filterByNumeric,
+    column,
+    setColumn,
     setFilterByNumeric,
     setFilter,
     setData,

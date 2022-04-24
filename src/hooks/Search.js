@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
+import buttonFilter from '../components/FunctionButton';
 import SWContext from '../context/SWContext';
+import Column from './Column';
 
 function Input() {
   const { data, search, setTable, table,
@@ -17,50 +19,6 @@ function Input() {
     } else { setTable(data); }
   }, [search]);
 
-  const buttonFilter = () => {
-    const column = document.getElementById('column').value;
-    const comparison = document.getElementById('comparison').value;
-    const valueFilter = document.getElementById('value-filter').value;
-    if (filterByNumeric) {
-      setFilterByNumeric({ filterByNumericValues: [
-        ...filterByNumeric.filterByNumericValues,
-        {
-          column,
-          comparison,
-          value: valueFilter,
-        },
-      ],
-      });
-    } else {
-      setFilterByNumeric({ filterByNumericValues: [
-        {
-          column,
-          comparison,
-          value: valueFilter,
-        },
-      ],
-      });
-    }
-    switch (comparison) {
-    case 'maior que':
-      setTable(table
-        .filter((element) => Number(element[column]) > Number(valueFilter)));
-      break;
-    case 'menor que':
-      setTable(table
-        .filter((element) => Number(element[column]) < Number(valueFilter)));
-      break;
-    case 'igual a':
-      setTable(table
-        .filter((element) => Number(element[column]) === Number(valueFilter)));
-      break;
-
-    default:
-      setTable(data);
-      break;
-    }
-  };
-
   return (
     <div>
       <input
@@ -71,13 +29,7 @@ function Input() {
         onChange={ ({ target }) => setSearch(target.value) }
       />
       <fieldset>
-        <select data-testid="column-filter" id="column">
-          <option value="population" defaultValue>population</option>
-          <option value="orbital_period">orbital_period</option>
-          <option value="diameter">diameter</option>
-          <option value="rotation_period">rotation_period</option>
-          <option value="surface_water">surface_water</option>
-        </select>
+        <Column />
         <select data-testid="comparison-filter" id="comparison">
           <option value="maior que" defaultValue>maior que</option>
           <option value="menor que">menor que</option>
@@ -93,7 +45,8 @@ function Input() {
         <button
           data-testid="button-filter"
           type="button"
-          onClick={ buttonFilter }
+          onClick={ () => buttonFilter(filterByNumeric,
+            setFilterByNumeric, table, setTable) }
         >
           Filtrar
         </button>
