@@ -4,8 +4,8 @@ import SWContext from '../context/SWContext';
 function Column() {
   const { column, filterByNumeric, setColumn } = useContext(SWContext);
   useEffect(() => {
-    if (filterByNumeric) {
-      const { filterByNumericValues } = filterByNumeric;
+    const { filterByNumericValues } = filterByNumeric;
+    if (filterByNumericValues.length) {
       const { length } = filterByNumericValues;
       const theColumnIwant = filterByNumericValues[length - 1].column;
       const newColumn = column.filter((element) => element !== theColumnIwant);
