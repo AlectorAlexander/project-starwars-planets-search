@@ -1,6 +1,7 @@
 # Star Wars Planet Search
 
 Projeto Front-End, em que o desafio foi fazer um site de pesquisas, baseado no universo fictício de Star Wars, onde é possível:
+
 1- Filtrar planetas por nome.
 
 2 - Filtrar, com base em uma categoria pré-selecionada, se essa mesma categoria é maior, menor, ou igual, a um determinado número inserido. Por exemplo: planetas que possuem uma população[categoria] maior que 3000[numeroInseridoPeloUsuário]
