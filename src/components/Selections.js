@@ -5,9 +5,10 @@ import SWContext from '../context/SWContext';
 
 function SelectFilter() {
   const { column, filterByNumeric, setColumn, setTable,
-    table, setFilterByNumeric } = useContext(SWContext);
+    table, setFilterByNumeric, data } = useContext(SWContext);
+  const { filterByNumericValues } = filterByNumeric;
+
   useEffect(() => {
-    const { filterByNumericValues } = filterByNumeric;
     if (filterByNumericValues.length) {
       const { length } = filterByNumericValues;
       const theColumnIwant = filterByNumericValues[length - 1].column;
@@ -16,11 +17,18 @@ function SelectFilter() {
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterByNumeric]);
+
+  const filterRestaure = () => {
+    setFilterByNumeric({ filterByNumericValues: [] });
+    setColumn(['population', 'orbital_period', 'diameter',
+      'rotation_period', 'surface_water']);
+    setTable(data);
+  };
   return (
     <Form
       className="d-flex border rounded-pill
     border-warning justify-content-center
-    align-items-end m-3 w-50 p-3"
+    align-items-end m-3 w-50 p-4"
     >
       <div>
         <p className="text-white">Coluna</p>
@@ -62,6 +70,16 @@ function SelectFilter() {
       >
         Filtrar
       </Button>
+      { filterByNumericValues.length > 0 && (
+        <Button
+          data-testid="button-filter"
+          type="button"
+          className="m-1"
+          variant="warning"
+          onClick={ filterRestaure }
+        >
+          Limpar todos os filtros
+        </Button>)}
     </Form>
   );
 }
