@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react';
+import { Table } from 'react-bootstrap';
 import SWContext from '../context/SWContext';
-import Input from '../hooks/Search';
-import Filters from '../hooks/Filters';
 
-function Table() {
+function TableFunction() {
   const { setStarWarsState, table, loading } = useContext(SWContext);
   useEffect(() => {
     setStarWarsState();
@@ -11,9 +10,9 @@ function Table() {
   }, []);
   return (
     <div>
-      <Input />
-      <Filters />
-      <table>
+      <Table
+        variant="dark"
+      >
         <thead>
           <tr>
             <th>Name</th>
@@ -65,9 +64,9 @@ function Table() {
             );
           })}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 }
 
-export default Table;
+export default TableFunction;

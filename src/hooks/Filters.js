@@ -1,20 +1,14 @@
-import React, { useContext } from 'react';
+/* eslint-disable no-case-declarations */
+/* eslint-disable array-callback-return */
+import React, { useContext, useEffect } from 'react';
 import SWContext from '../context/SWContext';
 
 function Filters() {
   const { filterByNumeric, setFilterByNumeric,
     column: coluna, setColumn, setTable, table, data } = useContext(SWContext);
 
-  const deleteFromTheFilter = (itemList) => {
-    console.log(table);
+  useEffect(() => {
     const { filterByNumericValues } = filterByNumeric;
-    const newFilter = filterByNumericValues
-      .filter((element) => element.column !== itemList);
-    setFilterByNumeric({ filterByNumericValues: newFilter });
-    setColumn([...coluna, itemList]);
-    setTable(data);
-    console.log(data);
-    console.log(table);
     filterByNumericValues.map((elem) => {
       const { column, comparison, value } = elem;
       switch (comparison) {
@@ -35,11 +29,20 @@ function Filters() {
         break;
       }
     });
+  }, [filterByNumeric, setTable, table]);
+
+  const deleteFromTheFilter = (itemList) => {
+    const { filterByNumericValues } = filterByNumeric;
+    const newFilter = filterByNumericValues
+      .filter((element) => element.column !== itemList);
+    setFilterByNumeric({ filterByNumericValues: newFilter });
+    setColumn([...coluna, itemList]);
+    setTable(data);
   };
 
   const { filterByNumericValues } = filterByNumeric;
   return (
-    <ul>
+    <ul className="d-flex justify-content-center">
       { filterByNumericValues
       && filterByNumericValues.map((element, i) => {
         const { column, comparison, value } = element;
