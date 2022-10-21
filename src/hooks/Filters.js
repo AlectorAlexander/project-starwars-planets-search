@@ -29,7 +29,7 @@ function Filters() {
         break;
       }
     });
-  }, [filterByNumeric, setTable, table]);
+  }, [filterByNumeric]);
 
   const deleteFromTheFilter = (itemList) => {
     const { filterByNumericValues } = filterByNumeric;
@@ -42,7 +42,7 @@ function Filters() {
 
   const { filterByNumericValues } = filterByNumeric;
   return (
-    <ul className="d-flex justify-content-center">
+    <ul className="d-flex justify-content-center flex-column flex text-white">
       { filterByNumericValues
       && filterByNumericValues.map((element, i) => {
         const { column, comparison, value } = element;

@@ -17,7 +17,11 @@ function SelectFilter() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterByNumeric]);
   return (
-    <Form className="d-flex justify-content-center align-items-end m-3">
+    <Form
+      className="d-flex border rounded-pill
+    border-warning justify-content-center
+    align-items-end m-3 w-50 p-3"
+    >
       <div>
         <p className="text-white">Coluna</p>
         <Form.Select className="bg-dark text-white" id="column">
@@ -44,16 +48,15 @@ function SelectFilter() {
       </div>
       <Form.Control
         id="value-filter"
-        defaultValue="0"
         className="bg-dark text-white"
-        style={ { heigth: '25%', width: '50px', marginLeft: '5px', marginRight: '5px' } }
+        style={ { heigth: '25%', width: '70px', marginLeft: '5px', marginRight: '5px' } }
         type="number"
-        placeholder="Digite um número"
+        placeholder="0"
       />
       <Button
         data-testid="button-filter"
         type="button"
-        variant="dark"
+        variant="warning"
         onClick={ () => buttonFilter(filterByNumeric,
           setFilterByNumeric, table, setTable) }
       >

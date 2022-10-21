@@ -17,20 +17,26 @@ function Searchs() {
   }, [search]);
 
   return (
-    <Form className="d-flex flex-column m-2 justify-content-center w-75">
-      <img
-        alt="star-wars-logo"
-        className="w-25"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1280px-Star_Wars_Logo.svg.png"
-      />
-      <Form.Control
-        type="text"
-        value={ search }
-        placeholder="Digite o nome do planeta"
-        className="w-25 bg-dark text-white"
-        onChange={ ({ target }) => setSearch(target.value) }
-      />
-    </Form>
+    <div>
+      <Form>
+        <div className="d-flex justify-content-center">
+          <img
+            alt="star-wars-logo"
+            className="w-25"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/1280px-Star_Wars_Logo.svg.png"
+          />
+        </div>
+        <div className="d-flex justify-content-center">
+          <Form.Control
+            type="text"
+            value={ search }
+            placeholder="Digite o nome do planeta"
+            className="w-25 bg-dark text-white"
+            onChange={ ({ target }) => setSearch(target.value) }
+          />
+        </div>
+      </Form>
+    </div>
   );
 }
 

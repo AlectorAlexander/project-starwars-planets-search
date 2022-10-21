@@ -1,4 +1,5 @@
 import React from 'react';
+import Orders from '../components/Orders';
 import Searchs from '../components/Searchs';
 import SelectFilter from '../components/Selections';
 import TableFunction from '../components/Table';
@@ -8,8 +9,11 @@ function Main() {
   return (
     <div className="d-flex justify-content-center flex-column">
       <Searchs />
+      <div className="d-flex justify-content-center">
+        <SelectFilter />
+        <Orders />
+      </div>
       <Filters />
-      <SelectFilter />
       <TableFunction />
     </div>
   );
