@@ -1,3 +1,4 @@
+/* eslint-disable no-await-in-loop */
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import fetchStarWars from '../api/API';
@@ -16,7 +17,17 @@ function Provider({ children }) {
   async function setStarWarsState() {
     try {
       const API = await fetchStarWars();
-      console.log(API);
+      const filmsFetch = async (urlFilms) => Promise.all(urlFilms.map(async (url) => {
+        const response = await fetch(url);
+        const titleFetch = await response.json();
+        return `"${titleFetch.title}" `;
+      }));
+      for (let i = 0; i < API.results.length; i += 1) {
+        const FilmsTitle = [];
+        const p = await filmsFetch(API.results[i].films);
+        FilmsTitle.push(p);
+        API.results[i].films = FilmsTitle;
+      }
       setData(API.results);
       setTable(API.results);
       setLoad(false);
