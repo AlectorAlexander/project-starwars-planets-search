@@ -14,10 +14,15 @@ function Provider({ children }) {
   const [filterByNumeric, setFilterByNumeric] = useState({ filterByNumericValues: [] });
 
   async function setStarWarsState() {
-    const API = await fetchStarWars();
-    setData(API.results);
-    setTable(API.results);
-    setLoad(false);
+    try {
+      const API = await fetchStarWars();
+      console.log(API);
+      setData(API.results);
+      setTable(API.results);
+      setLoad(false);
+    } catch (err) {
+      console.error(err);
+    }
   }
   const contextValue = {
     loading,
