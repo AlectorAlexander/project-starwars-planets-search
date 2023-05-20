@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import buttonFilter from '../hooks/FunctionButton';
 import SWContext from '../context/SWContext';
+import '../styles/Selections.css';
 
 function SelectFilter() {
   const { column, filterByNumeric, setColumn, setTable,
@@ -28,7 +29,7 @@ function SelectFilter() {
     <Form
       className="d-flex border rounded-pill
     border-warning justify-content-center
-    align-items-end m-3 w-50 p-4"
+    align-items-end m-3 selections p-4"
     >
       <div>
         <p className="text-white">Coluna</p>

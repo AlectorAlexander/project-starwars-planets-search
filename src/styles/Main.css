@@ -1,0 +1,16 @@
+.main {
+  overflow-y: auto;
+}
+
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100vw;
+}
+
+.table-wrapper {
+  min-width: 100%;
+  overflow-y: auto;
+}

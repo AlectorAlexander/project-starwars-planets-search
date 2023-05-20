@@ -1,0 +1,8 @@
+.table-container {
+  min-height: 100vh;
+}
+
+.table-responsive {
+  max-height: 100vh;
+  width: 100%;
+}

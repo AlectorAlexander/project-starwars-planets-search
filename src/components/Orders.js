@@ -2,6 +2,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import SWContext from '../context/SWContext';
+import '../styles/Orders.css';
 
 function Orders() {
   const { column, table, setTable } = useContext(SWContext);
@@ -41,9 +42,9 @@ function Orders() {
     <Form
       className="d-flex border rounded-pill
     border-warning justify-content-center
-    align-items-end m-3 w-50 p-3"
+    align-items-end m-3 p-3 orders"
     >
-      <div>
+      <div className="">
         <p className="text-white">Ordenar</p>
         <Form.Select
           className="bg-dark text-white"
@@ -60,7 +61,7 @@ function Orders() {
           ))}
         </Form.Select>
       </div>
-      <div className="">
+      <div className="pill">
         <p className="text-white">Operador</p>
         <Form.Group onClick={ ({ target }) => setOrder(target.value) }>
           <Form.Check

@@ -1,8 +1,10 @@
+/* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-case-declarations */
 /* eslint-disable array-callback-return */
 import React, { useContext, useEffect } from 'react';
 import SWContext from '../context/SWContext';
+import '../styles/Filters.css';
 
 function Filters() {
   const { filterByNumeric, setFilterByNumeric,
@@ -43,7 +45,7 @@ function Filters() {
 
   const { filterByNumericValues } = filterByNumeric;
   return (
-    <ul className="d-flex justify-content-center flex-column flex text-white">
+    <ul className="d-flex justify-content-center flex-column flex text-white h-100 filters">
       { filterByNumericValues
       && filterByNumericValues.map((element, i) => {
         const { column, comparison, value } = element;
