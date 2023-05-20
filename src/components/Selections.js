@@ -74,12 +74,11 @@ function SelectFilter() {
       { filterByNumericValues.length > 0 && (
         <Button
           data-testid="button-filter"
-          type="button"
-          className="m-1"
+          className="mx-1 button-filter"
           variant="warning"
           onClick={ filterRestaure }
         >
-          Limpar todos os filtros
+          Limpar filtros
         </Button>)}
     </Form>
   );

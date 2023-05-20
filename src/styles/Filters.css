@@ -11,3 +11,7 @@
 .iconVolts:hover {
   color: white;
 }
+
+.button-filter {
+  max-height: 50px;
+}
