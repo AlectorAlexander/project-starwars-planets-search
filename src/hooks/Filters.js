@@ -3,8 +3,10 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable array-callback-return */
 import React, { useContext, useEffect } from 'react';
-import SWContext from '../context/SWContext';
 import '../styles/Filters.css';
+import { Button } from 'react-bootstrap';
+import { RiDeleteBin2Fill } from 'react-icons/ri';
+import SWContext from '../context/SWContext';
 
 function Filters() {
   const { filterByNumeric, setFilterByNumeric,
@@ -54,12 +56,14 @@ function Filters() {
             key={ i }
           >
             {` ${column} ${comparison} ${value} `}
-            <button
+            <Button
+              variant="warning"
               onClick={ () => deleteFromTheFilter(column) }
+              className="buttonVolts"
               type="button"
             >
-              vx
-            </button>
+              <RiDeleteBin2Fill className="iconVolts" />
+            </Button>
           </li>
         );
       })}
