@@ -1,9 +1,10 @@
+import axios from 'axios';
+
 const setStarWarsURL = 'https://swapi.dev/api/planets/';
 
 async function fetchStarWars() {
-  const response = await fetch(setStarWarsURL);
-  const API = await response.json();
-  return API;
+  const response = await axios.get(setStarWarsURL);
+  return response.data;
 }
 
 export default fetchStarWars;
