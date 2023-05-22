@@ -1,9 +1,16 @@
+/* stylelint-disable comment-empty-line-before */
+/* stylelint-disable font-family-name-quotes */
+/* stylelint-disable value-list-comma-space-before */
 body {
   background-color: black;
   margin: 0;
   max-width: 100vw;
   padding: 0;
   width: 100%;
+}
+
+.App * {
+  font-family: 'Ubuntu Mono', sans-serif;
 }
 
 .App {

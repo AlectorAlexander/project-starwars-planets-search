@@ -3,3 +3,9 @@
   min-width: 350px;
   width: 45%;
 }
+
+.button-filter {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

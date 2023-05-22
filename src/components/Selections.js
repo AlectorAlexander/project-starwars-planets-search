@@ -6,7 +6,7 @@ import '../styles/Selections.css';
 
 function SelectFilter() {
   const { column, filterByNumeric, setColumn, setTable,
-    table, setFilterByNumeric, data } = useContext(SWContext);
+    table, setFilterByNumeric, data, loading } = useContext(SWContext);
   const { filterByNumericValues } = filterByNumeric;
 
   useEffect(() => {
@@ -64,6 +64,7 @@ function SelectFilter() {
       />
       <Button
         data-testid="button-filter"
+        disabled={ loading }
         type="button"
         variant="warning"
         onClick={ () => buttonFilter(filterByNumeric,
